@@ -1,0 +1,194 @@
+.cpto-cont-hero{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 75px;
+    padding: 25px 0 0 0;
+}
+.cpto-title1{
+    text-transform: uppercase;
+    color: #333;
+}
+.cpto-red{
+    color:#e2001a;
+    line-height: 100px;
+}
+.cpto-img{
+    height: 250px;
+}
+.cpto-cont-central{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding:0 15%;
+    margin: 50px 0;
+}
+.cpto-central-adress{
+    width: 400px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
+}
+.cpto-title2{
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.cpto-central-booking{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
+}
+.cpto-button{
+    background-color: #e2001a;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 5px;
+    margin:15px auto;
+}
+.cpto-offers{
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    min-height: 300px;
+    justify-content: space-evenly;
+    margin:100px 0;
+}
+.cpto-offers .cpto-title2{
+    text-align: center;
+}
+.cpto-button{
+    background-color: #e2001a;
+    color: #fff;
+    border: 1px solid;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    margin:15px auto;
+}
+.cpto-button:hover{
+    background-color: transparent;
+    color: #e2001a;
+    border: 1px solid;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    margin:15px auto;
+}
+
+@media (max-width:700px) {
+    .cpto-cont-hero{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 25px 0;
+    }
+    .cpto-title1{
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 30px;
+    }
+    .cpto-red{
+        color:#e2001a;
+        line-height: 60px;
+    }
+    .cpto-img{
+        size: 5%;
+    }
+    .cpto-cont-central{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+        padding:0 10px;
+        margin: 50px 0;
+    }
+    .cpto-central-adress{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: auto;
+    }
+    .cpto-title2{
+        text-transform: uppercase;
+        font-size: 30px;
+    }
+    .cpto-central-booking{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 400px;
+    }
+    .cpto-offers{
+        display: flex;
+        flex-direction: column;
+        background-color: #f5f5f5;
+        min-height: 300px;
+        justify-content: space-evenly;
+        margin:50px 0;
+    }
+    .cpto-offers .cpto-title2{
+        text-align: center;
+    }
+    .cpto-button{
+        background-color: #e2001a;
+        color: #fff;
+        border: 1px solid;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 5px;
+        margin:15px auto;
+    }
+    .cpto-button:hover{
+        background-color: transparent;
+        color: #e2001a;
+        border: 1px solid;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 5px;
+        margin:15px auto;
+    }
+}
+
+/* Shortcode lista oficinas por provincia */
+.cpto-lista-provincias{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 50px;
+    justify-content: center;
+    max-height: 300px;
+    margin: 0 0 50px 0;
+}
+.cpto-item-list{
+    margin: 0;
+}
+@media (max-width:700px){
+    .cpto-lista-provincias{
+        display: flex;
+        flex-flow: row wrap;
+        gap: 5%;
+    }
+    .cpto-item-list{
+        width: 45%;
+        line-height: 50px;
+    } 
+}
