@@ -1,12 +1,11 @@
 <?php
 /**
- * Single post content template.
+ * Single post oficina content template.
  *
- * @since 1.0.0
  *
- * @package The7\Templates
  */
 
+// Recogemos todos los datos que se piden al crear una oficina (campos personalizados)
 $direccion =    get_post_meta( get_the_ID(), 'direccion', true );
 $cp =           get_post_meta( get_the_ID(), 'cp', true );
 $ciudad =       get_post_meta( get_the_ID(), 'ciudad', true );
@@ -22,6 +21,7 @@ get_header();
 
 ?>
 
+// Creamos el contenido añadiendo los datos que hemos recogido antes
 <div class="cpto-cont-hero">
     <h1 class="cpto-title1">SYNERGIE MÁS CERCA DE TI<br><span class="cpto-red"> <?php the_title() ?> </span></h1>
     <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'img/map-phone.png'; ?>" alt="" class="cpto-img">
