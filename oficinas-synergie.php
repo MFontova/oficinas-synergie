@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Oficinas de Synergie
-Description: Con este plugin podemos generar oficinas de una forma muy simple, solo rellenando unos campos. Deveuelve una estructura de enlaces lógica y ordenada. Crea un Custom Post Type llamado "oficinas", así como una taxonomía llamada "provincias". Incluye plantillas PHP para la pagina de cada oficina y para el archivo de oficinas. Crea también shortcodes que podemos introducir donde queramos para mostrar un listado de oficinas según la provincia.
+Description: Con este plugin podemos generar oficinas de una forma muy simple, solo rellenando unos campos. Deveuelve una estructura de enlaces lógica y ordenada. Crea un Custom Post Type llamado "oficinas", así como una taxonomía llamada "provincias". Incluye plantillas PHP para la pagina de cada oficina y para la taxonomía provincia. Crea también shortcodes que podemos introducir donde queramos para mostrar un listado de oficinas según la provincia, así como un shortcode para mostrar el listado de todas las provincias.
 Version: 0.01
 Author: Marc Fontova
 License: GPL 2+
