@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Oficinas de Synergie
-Description: Con este plugin podemos generar oficinas de una forma muy simple, solo rellenando unos campos. Deveuelve una estructura de enlaces lógica y ordenada. Crea un Custom Post Type llamado "oficinas", así como una taxonomía llamada "provincias". Incluye plantillas PHP para la pagina de cada oficina y para la taxonomía provincia. Crea también shortcodes que podemos introducir donde queramos para mostrar un listado de oficinas según la provincia, así como un shortcode para mostrar el listado de todas las provincias.
+Description: Con este plugin podemos generar oficinas de una forma muy simple, solo rellenando unos campos. Deveuelve una estructura de enlaces lógica y ordenada. Crea un Custom Post Type llamado "oficinas", así como una taxonomía llamada "provincias". Incluye plantillas PHP para la pagina de cada oficina y para el archivo de oficinas. Crea también shortcodes que podemos introducir donde queramos para mostrar un listado de oficinas según la provincia.
 Version: 0.01
 Author: Marc Fontova
 License: GPL 2+
@@ -66,7 +66,7 @@ if ( ! function_exists( 'ctax_codigo' ) ) {
             'name'                       => _x( 'Código', 'Taxonomy General Name', 'text_domain' ),
             'singular_name'              => _x( 'Código', 'Taxonomy Singular Name', 'text_domain' ),
             'menu_name'                  => __( 'Códigos', 'text_domain' ),
-            'all_items'                  => __( 'Todas las códigos', 'text_domain' ),
+            'all_items'                  => __( 'Todos los códigos', 'text_domain' ),
             'parent_item'                => __( 'Código padre', 'text_domain' ),
             'parent_item_colon'          => __( 'Código padre:', 'text_domain' ),
             'new_item_name'              => __( 'Nuevo código', 'text_domain' ),
@@ -203,13 +203,9 @@ function campos_automatizados($post_id){
 add_action('wp_insert_post','campos_automatizados');
 
 
-// Añadimos las plantillas que vamos a utilizar para el archivo de oficinas así como para cada oficina en singular
+// Añadimos las plantillas que vamos a utilizar para cada oficina en singular y para la taxonomía provincia
 function oficinas_synergie_templates( $template )
 {	
-    if( is_archive( 'oficinas' ) ) {
-        $template = WP_PLUGIN_DIR .'/'. plugin_basename( dirname(__FILE__) ) .'/templates/archive-oficinas.php';
-	}
-	
 	if( is_singular( 'oficinas' ) ) {
         $template = WP_PLUGIN_DIR .'/'. plugin_basename( dirname(__FILE__) ) .'/templates/single-oficinas.php';
 	}
@@ -226,7 +222,6 @@ add_filter( 'template_include', 'oficinas_synergie_templates' );
 // Registramos y ponemos en cola los estilos css
 function oficinas_styles(){
     global $post;
-    //if(is_singular('oficinas') || is_archive('oficinas') || is_tax() || has_shortcode($post->post_content,'oficinas')){
     if(is_archive() || is_singular('oficinas') || has_shortcode($post->post_content,'oficinas') || has_shortcode($post->post_content,'provincias')){
         wp_register_style('oficinas_estilos', plugins_url('oficinas-style.css', __FILE__));
         wp_enqueue_style('oficinas_estilos');
@@ -283,7 +278,7 @@ function provincias_shortcode(){
 
     $provincias = get_terms(array(
         'taxonomy' => 'provincia',
-        'hide_empty' => false,
+        'hide_empty' => true,
     ));
     $content .= '<h3>ENCUENTRA LA OFICINA MÁS CERCANA EN TU PROVINCIA</h3>';
     $content .= '<div class="cpto-lista-provincias">';
@@ -296,3 +291,32 @@ function provincias_shortcode(){
     return $content;
 }
 add_shortcode('provincias','provincias_shortcode');
+
+// Breadcrumbs
+function get_breadcrumb(){
+    // Imprimimos el inicio del breadcrumb con el enlace a la home y a la página oficinas
+    // Inicio >> Oficinas
+    echo '<p><a href="'.home_url().'">Inicio</a> >> <a href="/oficinas/">Oficinas</a> >> ';
+
+    // Evaluamos si se trata de una página de taxonomía
+    if(is_tax('','provincia')){
+        // Imprimimos el título de la taxonomía
+        // Inicio >> Oficinas >> Provincia
+        echo ' '.single_term_title();
+    }
+
+    // Evaluamos si se trata de single
+    elseif(is_single()){
+        // Recogemos todas los terms de la página y los recorremos (solo debe haber uno)
+        $terms = get_the_terms( $post->ID, 'provincia' );
+        if ($terms) {
+            foreach($terms as $term) {
+                // Imprimimos el term con el enlace
+                // Inicio >> Oficinas >> Provincia >> Oficina 
+                echo '<a href="'.get_term_link($term).'">'.$term->name.'</a> >> ';
+                the_title();
+            } 
+        }
+    }
+    echo '</p>';
+}
