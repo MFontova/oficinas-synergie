@@ -53,4 +53,6 @@ get_header();
 
 <?php
 
+get_breadcrumb();
+
 get_footer();
