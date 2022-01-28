@@ -21,7 +21,7 @@ get_header();
 
 ?>
 
-// Creamos el contenido añadiendo los datos que hemos recogido antes
+<!-- Creamos el contenido añadiendo los datos que hemos recogido antes -->
 <div class="cpto-cont-hero">
     <h1 class="cpto-title1">SYNERGIE MÁS CERCA DE TI<br><span class="cpto-red"> <?php the_title() ?> </span></h1>
     <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'img/map-phone.png'; ?>" alt="" class="cpto-img">
