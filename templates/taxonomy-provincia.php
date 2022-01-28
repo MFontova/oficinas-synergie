@@ -62,6 +62,8 @@ if ($the_query->have_posts()){
 
 wp_reset_postdata();
 
+get_breadcrumb();
+        
 get_footer();
 
 ?>
